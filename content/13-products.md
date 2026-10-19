@@ -1,6 +1,6 @@
 id: products
 kind: products
-label: The two products
+label: Products
 title: Build the engine first. Then the world.
 
 ```html
@@ -13,7 +13,8 @@ title: Build the engine first. Then the world.
       <li>Everything is a component</li>
       <li>Content-addressed and replayable</li>
       <li>Fail-closed by construction</li>
-      <li>Free core · pro for teams</li>
+      <li>Provider-placed execution</li>
+      <li>Free core · Pro for teams</li>
     </ul>
   </div>
   <div class="card">
@@ -24,6 +25,7 @@ title: Build the engine first. Then the world.
       <li>A deterministic, provable software factory</li>
       <li>Components created on demand</li>
       <li>You at the centre; you own your data</li>
+      <li>Domain-expert agents</li>
       <li>Agent-centric and peer-to-peer by design</li>
     </ul>
   </div>

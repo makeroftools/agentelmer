@@ -198,8 +198,11 @@ PAGE = """<!DOCTYPE html>
 <header class="topbar">
   <span class="mark"><img src="elmer.svg" alt="" class="mark__elmer">AgentElmer</span>
   <nav class="topnav">
+    <a href="#capabilities">Capabilities</a>
+    <a href="#architecture">How it works</a>
     <a href="#products">Products</a>
-    <a href="#governance">Governance</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
     <a href="#cta" class="cta">Get started</a>
   </nav>
 </header>
@@ -207,7 +210,7 @@ PAGE = """<!DOCTYPE html>
 {body}
 </main>
 <footer class="footer">
-  <span>Creative Development Systems</span>
+  <span>Creative Development Systems · <a href="https://x.com/makeroftools">@makeroftools</a></span>
   <span class="muted">The agent is you. The AI is the instrument.</span>
 </footer>
 <script src="app.js"></script>

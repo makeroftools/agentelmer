@@ -176,9 +176,9 @@ main { position: relative; z-index: 1; }
 .beat--principle .beat__title em { color: var(--warm); font-style: italic; }
 
 /* products */
-.beat--products .grid {
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.25rem;
   margin-top: 2.5rem;
 }
@@ -311,6 +311,71 @@ a { color: var(--cool); }
 }
 .rail:hover a { opacity: 0.7; }
 .rail a.active { opacity: 1; color: var(--warm); }
+
+/* wide blocks inside the prose column */
+.beat__body:has(.grid), .beat__body:has(.pricing), .beat__body:has(.flow) {
+  max-width: none;
+}
+
+/* flow (stage machine) */
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2.2rem;
+}
+.flow__node {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+.flow__arrow { color: var(--cool); }
+
+/* pricing */
+.pricing {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+.tier {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1.9rem 1.7rem;
+  display: flex;
+  flex-direction: column;
+}
+.tier--featured {
+  border-color: var(--warm);
+  background: linear-gradient(180deg, rgba(230, 161, 90, 0.07), transparent);
+}
+.tier h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; margin: 0; }
+.tier .price { font-family: var(--serif); font-size: 1.9rem; color: var(--warm); margin: 0.4rem 0 0.6rem; }
+.tier p { color: var(--muted); margin: 0 0 1rem; font-size: 0.95rem; }
+.tier ul { color: var(--muted); padding-left: 1.1rem; margin: 0; }
+.tier li { margin: 0.35rem 0; }
+
+/* faq */
+.faq { max-width: var(--measure); margin-top: 1.5rem; }
+.faq details { border-bottom: 1px solid var(--line); padding: 1.05rem 0; }
+.faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+  display: flex;
+  gap: 0.7rem;
+  align-items: baseline;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::before { content: "+"; color: var(--cool); font-family: var(--mono); }
+.faq details[open] summary::before { content: "\2013"; }
+.faq p { color: var(--muted); margin: 0.7rem 0 0 1.5rem; }
 
 /* footer */
 .footer {
