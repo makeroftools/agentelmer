@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 220" role="img" aria-label="Same inputs produce the same address">
+  <g font-family="ui-monospace, monospace" font-size="13" fill="#c9ced4">
+    <!-- run 1 -->
+    <rect x="20" y="34" width="120" height="40" rx="10" fill="none" stroke="#57d1c6" stroke-width="2"/>
+    <text x="80" y="59" text-anchor="middle">same intent</text>
+    <path d="M150 54 h50" stroke="#57d1c6" stroke-width="2"/>
+    <path d="M195 49 l8 5 -8 5" stroke="#57d1c6" stroke-width="2" fill="none"/>
+    <rect x="210" y="34" width="120" height="40" rx="10" fill="none" stroke="#8f83ff" stroke-width="2"/>
+    <text x="270" y="59" text-anchor="middle">build</text>
+    <path d="M340 54 h50" stroke="#8f83ff" stroke-width="2"/>
+    <path d="M385 49 l8 5 -8 5" stroke="#8f83ff" stroke-width="2" fill="none"/>
+    <rect x="400" y="34" width="200" height="40" rx="10" fill="none" stroke="#e8a45c" stroke-width="2"/>
+    <text x="500" y="59" text-anchor="middle" fill="#e8a45c">sha256:1c2ba7…</text>
+
+    <!-- run 2 -->
+    <rect x="20" y="146" width="120" height="40" rx="10" fill="none" stroke="#57d1c6" stroke-width="2"/>
+    <text x="80" y="171" text-anchor="middle">same intent</text>
+    <path d="M150 166 h50" stroke="#57d1c6" stroke-width="2"/>
+    <path d="M195 161 l8 5 -8 5" stroke="#57d1c6" stroke-width="2" fill="none"/>
+    <rect x="210" y="146" width="120" height="40" rx="10" fill="none" stroke="#8f83ff" stroke-width="2"/>
+    <text x="270" y="171" text-anchor="middle">build</text>
+    <path d="M340 166 h50" stroke="#8f83ff" stroke-width="2"/>
+    <path d="M385 161 l8 5 -8 5" stroke="#8f83ff" stroke-width="2" fill="none"/>
+    <rect x="400" y="146" width="200" height="40" rx="10" fill="none" stroke="#e8a45c" stroke-width="2"/>
+    <text x="500" y="171" text-anchor="middle" fill="#e8a45c">sha256:1c2ba7…</text>
+
+    <text x="590" y="112" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#f3f1ea">=</text>
+  </g>
+</svg>

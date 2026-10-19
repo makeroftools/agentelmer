@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" role="img" aria-label="A timeline from 2003 to now">
+  <line x1="60" y1="120" x2="845" y2="120" stroke="#57d1c6" stroke-opacity="0.4" stroke-width="2"/>
+  <g font-family="ui-monospace, monospace" font-size="12.5" text-anchor="middle">
+    <g>
+      <circle cx="80" cy="120" r="7" fill="#0a0b0f" stroke="#e8a45c" stroke-width="2.4"/>
+      <text x="80" y="100" fill="#f3f1ea">2003</text>
+      <text x="80" y="150" fill="#a4aab3">self-taught CS</text>
+    </g>
+    <g>
+      <circle cx="235" cy="120" r="7" fill="#0a0b0f" stroke="#57d1c6" stroke-width="2.4"/>
+      <text x="235" y="100" fill="#f3f1ea">~2011</text>
+      <text x="235" y="150" fill="#a4aab3">pdlPlatform</text>
+    </g>
+    <g>
+      <circle cx="400" cy="120" r="7" fill="#0a0b0f" stroke="#8f83ff" stroke-width="2.4"/>
+      <text x="400" y="100" fill="#f3f1ea">2014</text>
+      <text x="400" y="150" fill="#a4aab3">the insight</text>
+    </g>
+    <g>
+      <circle cx="550" cy="120" r="7" fill="#0a0b0f" stroke="#e8a45c" stroke-width="2.4"/>
+      <text x="550" y="100" fill="#f3f1ea">2015</text>
+      <text x="550" y="150" fill="#a4aab3">the whitepaper</text>
+    </g>
+    <g>
+      <circle cx="690" cy="120" r="7" fill="#0a0b0f" stroke="#57d1c6" stroke-width="2.4"/>
+      <text x="690" y="100" fill="#f3f1ea">2018</text>
+      <text x="690" y="150" fill="#a4aab3">Holochain</text>
+    </g>
+    <g>
+      <circle cx="840" cy="120" r="8" fill="#e8a45c" stroke="#e8a45c" stroke-width="2.4"/>
+      <text x="840" y="100" fill="#f3f1ea">now</text>
+      <text x="840" y="150" fill="#e8a45c">Agent Elmer</text>
+    </g>
+  </g>
+</svg>

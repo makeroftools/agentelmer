@@ -179,16 +179,19 @@ def build() -> int:
     def url(page) -> str:
         return f"/{page['slug']}/" if page["slug"] else "/"
 
+    def nav_html(active):
+        return "".join(
+            '<a href="%s"%s>%s</a>' % (
+                url(p), ' class="active"' if p is active else "",
+                html.escape(p["meta"].get("nav", p["name"].title())))
+            for p in pages if p["meta"].get("nav")
+        )
+
     for page in pages:
         prefix = "./" if page["slug"] == "" else "../"
         if page["slug"]:
             os.makedirs(os.path.join(DIST, page["slug"]))
-        nav = "".join(
-            '<a href="%s"%s>%s</a>' % (
-                url(p), ' class="active"' if p is page else "",
-                html.escape(p["meta"].get("nav", p["name"].title())))
-            for p in pages if p["meta"].get("nav")  # only show labelled pages
-        )
+        nav = nav_html(page)
         rail = "\n".join(
             f'<a href="#{html.escape(m.get("id", f"beat-{i:02d}"))}" '
             f'data-target="{html.escape(m.get("id", f"beat-{i:02d}"))}">{html.escape(m.get("label", ""))}</a>'
@@ -205,12 +208,41 @@ def build() -> int:
         doc = doc.replace("{rail}", rail)
         doc = doc.replace("{body}", "\n".join(page["beats"]))
         doc = doc.replace("{tagline}", TAGLINE)
+        doc = doc.replace("{site_url}", SITE_URL)
         # prefix root-relative links/assets authored in content
         doc = doc.replace('href="/', f'href="{prefix}')
         doc = doc.replace('src="/', f'src="{prefix}')
         out_dir = DIST if not page["slug"] else os.path.join(DIST, page["slug"])
         with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as fh:
             fh.write(doc)
+    # sitemap + robots
+    urls = "\n".join(f"  <url><loc>{SITE_URL + url(p)}</loc></url>" for p in pages)
+    with open(os.path.join(DIST, "sitemap.xml"), "w", encoding="utf-8") as fh:
+        fh.write('<?xml version="1.0" encoding="UTF-8"?>\n'
+                 '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+                 + urls + "\n</urlset>\n")
+    with open(os.path.join(DIST, "robots.txt"), "w", encoding="utf-8") as fh:
+        fh.write(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
+
+    # 404
+    nf = ('<section class="beat beat--prose"><div class="beat__inner">'
+          '<p class="eyebrow">Not found</p>'
+          '<h1 class="beat__title">This page drifted.</h1>'
+          '<div class="beat__body"><p>Nothing lives here. '
+          '<a href="./">Return home</a>.</p></div></div></section>')
+    doc = PAGE.replace("{prefix}", "./")
+    for k, v in (("{title}", "Not found — Agent Elmer"),
+                 ("{description}", "Page not found."),
+                 ("{canonical}", SITE_URL + "/404.html"),
+                 ("{og_image}", SITE_URL + "/og.png"),
+                 ("{brand}", SITE_NAME), ("{nav}", nav_html(None)),
+                 ("{rail}", ""), ("{body}", nf), ("{tagline}", TAGLINE),
+                 ("{site_url}", SITE_URL)):
+        doc = doc.replace(k, v)
+    doc = doc.replace('href="/', 'href="./').replace('src="/', 'src="./')
+    with open(os.path.join(DIST, "404.html"), "w", encoding="utf-8") as fh:
+        fh.write(doc)
+
     print(f"build: wrote {len(pages)} page(s) -> dist/")
     return 0
 
@@ -234,6 +266,7 @@ PAGE = """<!DOCTYPE html>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@makeroftools">
 <link rel="icon" href="{prefix}favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Agent Elmer","url":"{site_url}","sameAs":["https://x.com/makeroftools"],"description":"A deterministic, agent-centric software factory."}</script>
 <link rel="stylesheet" href="{prefix}style.css">
 <noscript><style>.beat__inner{opacity:1;transform:none}</style></noscript>
 </head>

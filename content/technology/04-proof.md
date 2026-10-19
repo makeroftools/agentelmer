@@ -5,9 +5,11 @@ title: Provable — not promised.
 
 Every artifact the factory produces is content-addressed. Two runs, two machines, one address. There is no "it worked on my machine."
 
-```text
-same intent   →  same address
-same address  →  same bytes
+```html
+<figure class="diagram">
+<img src="/proof.svg" alt="Two identical runs produce the same address">
+<figcaption class="muted">Same inputs, same bytes — every time.</figcaption>
+</figure>
 ```
 
 - **Deterministic** — the same pinned inputs yield the same outcome, every time.
