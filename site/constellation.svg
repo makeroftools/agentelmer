@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" role="img" aria-label="Elmer at the centre of a ring of reusable pieces">
+  <defs>
+    <radialGradient id="cglow" cx="50%" cy="50%" r="55%">
+      <stop offset="0" stop-color="#e6a15a" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#e6a15a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect x="0" y="0" width="640" height="440" fill="url(#cglow)"/>
+
+  <!-- links -->
+  <g stroke="#5ad1c8" stroke-opacity="0.35" stroke-width="1.4">
+    <line x1="320" y1="220" x2="320" y2="54"/>
+    <line x1="320" y1="220" x2="470" y2="139"/>
+    <line x1="320" y1="220" x2="470" y2="301"/>
+    <line x1="320" y1="220" x2="320" y2="386"/>
+    <line x1="320" y1="220" x2="170" y2="301"/>
+    <line x1="320" y1="220" x2="170" y2="139"/>
+  </g>
+
+  <!-- nodes -->
+  <g font-family="ui-monospace, monospace" font-size="13" fill="#c9ced4" text-anchor="middle">
+    <g><circle cx="320" cy="46" r="24" fill="#12141a" stroke="#e6a15a" stroke-width="2"/><text x="320" y="90">Idea</text></g>
+    <g><circle cx="472" cy="134" r="24" fill="#12141a" stroke="#5ad1c8" stroke-width="2"/><text x="472" y="178">Tool</text></g>
+    <g><circle cx="472" cy="306" r="24" fill="#12141a" stroke="#e6a15a" stroke-width="2"/><text x="472" y="350">Game</text></g>
+    <g><circle cx="320" cy="394" r="24" fill="#12141a" stroke="#5ad1c8" stroke-width="2"/><text x="320" y="438">Plan</text></g>
+    <g><circle cx="168" cy="306" r="24" fill="#12141a" stroke="#e6a15a" stroke-width="2"/><text x="168" y="350">Shop</text></g>
+    <g><circle cx="168" cy="134" r="24" fill="#12141a" stroke="#5ad1c8" stroke-width="2"/><text x="168" y="178">Notes</text></g>
+  </g>
+
+  <!-- Elmer, centred -->
+  <g transform="translate(320 220) scale(0.62) translate(-213 -178)">
+    <ellipse cx="213" cy="252" rx="152" ry="13" fill="#000" opacity="0.28"/>
+    <g stroke="#6d4322" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M118 196 L104 236 Q102 244 111 244 L126 244 Q132 244 133 236 L140 200 Z" fill="#d99a54"/>
+      <path d="M286 196 L290 236 Q291 244 299 244 L314 244 Q322 244 320 236 L306 200 Z" fill="#d99a54"/>
+      <path d="M86 186 L58 196 L88 204 Z" fill="#e9b877"/>
+      <path d="M298 170 Q300 138 330 136 Q360 134 368 162 Q373 184 352 197 Q337 205 320 198 Z" fill="#f0c48c"/>
+      <path d="M76 200 Q76 96 200 96 Q324 96 324 200 Z" fill="#e6a15a"/>
+    </g>
+    <circle cx="347" cy="159" r="9" fill="#fff8ee"/>
+    <circle cx="349" cy="160" r="4.6" fill="#2a1a0c"/>
+  </g>
+</svg>

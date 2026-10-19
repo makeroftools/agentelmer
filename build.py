@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
-"""build.py — deterministic static-site generator for the MVP website.
+"""build.py — deterministic multi-page static-site generator.
 
-Content is authored as markdown in `content/*.md`, each with a tiny flat
-`Key: value` header (JSON-free, line-oriented). This generator renders those
-beats into one static `dist/index.html`, copying the `site/` assets alongside.
-Same content in => same bytes out. Stdlib only.
+Content is authored as markdown under `content/<page>/`, one directory per page:
 
-Header keys (closed set): id, kind, label, title, subtitle.
-Kinds: hero | prose | principle | products | cta.
+    content/
+      index/          ->  dist/index.html            (URL "/")
+        _page.md      page meta: title, description, nav, order
+        01-hero.md    a "beat" (section): id, kind, label, title, subtitle + md
+      technology/     ->  dist/technology/index.html (URL "/technology/")
 
-Usage:  python3 build.py        (builds dist/)
-        python3 -m http.server -d dist 4000   (preview)
+Links and assets in content are written **root-relative** (`/idea/`,
+`/elmer-hero.svg`); the generator prefixes them per page depth, so the same
+output works at a domain root or under a project subpath. Standard library only.
+Same content in => same bytes out.
+
+Usage:  python3 build.py
+        python3 -m http.server 4000 --directory dist
 """
 from __future__ import annotations
 
@@ -25,11 +30,14 @@ CONTENT = os.path.join(ROOT, "content")
 SITE = os.path.join(ROOT, "site")
 DIST = os.path.join(ROOT, "dist")
 
-HEADER_KEYS = ("id", "kind", "label", "title", "subtitle")
+SITE_URL = "https://agent-elmer.prodatalab.com"
+SITE_NAME = "AgentElmer"
+TAGLINE = "The agent is you. The AI is the instrument."
+BEAT_KEYS = ("id", "kind", "label", "title", "subtitle")
+PAGE_KEYS = ("title", "description", "nav", "order")
 
 
-def parse_front(text: str) -> tuple:
-    """Flat `Key: value` header, then a blank line, then the body."""
+def parse_front(text: str, keys: tuple) -> tuple:
     lines = text.splitlines()
     meta: dict = {}
     i = 0
@@ -37,11 +45,10 @@ def parse_front(text: str) -> tuple:
         if ":" in lines[i]:
             key, value = lines[i].split(":", 1)
             key = key.strip().lower()
-            if key in HEADER_KEYS:
+            if key in keys:
                 meta[key] = value.strip()
         i += 1
-    body = "\n".join(lines[i:]).strip("\n")
-    return meta, body
+    return meta, "\n".join(lines[i:]).strip("\n")
 
 
 def inline(s: str) -> str:
@@ -54,9 +61,6 @@ def inline(s: str) -> str:
 
 
 def render_md(text: str) -> str:
-    """A small, fixed markdown subset: headings, paragraphs, lists, quotes,
-    inline emphasis/code/links, and fenced blocks (```html injects raw markup —
-    the sanctioned escape hatch for hand-drawn SVG diagrams)."""
     out: list = []
     lines = text.split("\n")
     para: list = []
@@ -79,10 +83,8 @@ def render_md(text: str) -> str:
                 i += 1
             i += 1
             code = "\n".join(buf)
-            if info in ("html", "svg"):
-                out.append(code)
-            else:
-                out.append(f"<pre><code>{html.escape(code)}</code></pre>")
+            out.append(code if info in ("html", "svg")
+                       else f"<pre><code>{html.escape(code)}</code></pre>")
             continue
         if re.match(r"^#{1,6}\s", line):
             flush()
@@ -119,9 +121,8 @@ def render_md(text: str) -> str:
 def render_beat(meta: dict, body: str, index: int) -> str:
     kind = meta.get("kind", "prose")
     beat_id = meta.get("id", f"beat-{index:02d}")
-    parts = [f'<section class="beat beat--{kind}" id="{html.escape(beat_id)}" '
-             f'data-beat="{index}">']
-    parts.append('<div class="beat__inner">')
+    parts = [f'<section class="beat beat--{kind}" id="{html.escape(beat_id)}" data-beat="{index}">',
+             '<div class="beat__inner">']
     if meta.get("label"):
         parts.append(f'<p class="eyebrow">{inline(meta["label"])}</p>')
     tag = "h1" if kind == "hero" else "h2"
@@ -135,39 +136,82 @@ def render_beat(meta: dict, body: str, index: int) -> str:
     return "\n".join(parts)
 
 
+def load_pages() -> list:
+    pages = []
+    for name in sorted(os.listdir(CONTENT)):
+        d = os.path.join(CONTENT, name)
+        if not os.path.isdir(d):
+            continue
+        meta_path = os.path.join(d, "_page.md")
+        pmeta = {}
+        if os.path.isfile(meta_path):
+            with open(meta_path, encoding="utf-8") as fh:
+                pmeta, _ = parse_front(fh.read(), PAGE_KEYS)
+        slug = "" if name == "index" else name
+        beats = []
+        metas = []
+        for f in sorted(x for x in os.listdir(d) if x.endswith(".md") and x != "_page.md"):
+            with open(os.path.join(d, f), encoding="utf-8") as fh:
+                bmeta, body = parse_front(fh.read(), BEAT_KEYS)
+            metas.append(bmeta)
+            beats.append(render_beat(bmeta, body, len(beats) + 1))
+        pages.append({"name": name, "slug": slug, "meta": pmeta,
+                      "order": int(pmeta.get("order", 50)), "beats": beats, "metas": metas})
+    pages.sort(key=lambda p: (p["order"], p["name"]))
+    return pages
+
+
 def build() -> int:
-    if not os.path.isdir(CONTENT):
-        print("build: no content/ directory", file=sys.stderr)
+    pages = load_pages()
+    if not pages:
+        print("build: no pages under content/", file=sys.stderr)
         return 2
-    names = sorted(f for f in os.listdir(CONTENT) if f.endswith(".md"))
-    beats = []
-    metas = []
-    for name in names:
-        with open(os.path.join(CONTENT, name), encoding="utf-8") as fh:
-            meta, body = parse_front(fh.read())
-        metas.append(meta)
-        beats.append(render_beat(meta, body, len(beats) + 1))
-
-    def beat_id(i: int, meta: dict) -> str:
-        return meta.get("id", f"beat-{i:02d}")
-
-    rail = "\n".join(
-        f'<a href="#{html.escape(beat_id(i, m))}" '
-        f'data-target="{html.escape(beat_id(i, m))}">{html.escape(m.get("label", ""))}</a>'
-        for i, m in enumerate(metas, 1)
-    )
-
     if os.path.isdir(DIST):
         shutil.rmtree(DIST)
     os.makedirs(DIST)
     if os.path.isdir(SITE):
         for entry in os.listdir(SITE):
-            shutil.copy2(os.path.join(SITE, entry), os.path.join(DIST, entry))
+            s = os.path.join(SITE, entry)
+            if os.path.isfile(s):
+                shutil.copy2(s, os.path.join(DIST, entry))
 
-    page = PAGE.replace("{body}", "\n".join(beats)).replace("{rail}", rail)
-    with open(os.path.join(DIST, "index.html"), "w", encoding="utf-8") as fh:
-        fh.write(page)
-    print(f"build: wrote {len(beats)} beat(s) -> {os.path.join(DIST, 'index.html')}")
+    # site-wide nav (all pages, in order)
+    def url(page) -> str:
+        return f"/{page['slug']}/" if page["slug"] else "/"
+
+    for page in pages:
+        prefix = "./" if page["slug"] == "" else "../"
+        if page["slug"]:
+            os.makedirs(os.path.join(DIST, page["slug"]))
+        nav = "".join(
+            '<a href="%s"%s>%s</a>' % (
+                url(p), ' class="active"' if p is page else "",
+                html.escape(p["meta"].get("nav", p["name"].title())))
+            for p in pages if p["meta"].get("nav")  # only show labelled pages
+        )
+        rail = "\n".join(
+            f'<a href="#{html.escape(m.get("id", f"beat-{i:02d}"))}" '
+            f'data-target="{html.escape(m.get("id", f"beat-{i:02d}"))}">{html.escape(m.get("label", ""))}</a>'
+            for i, m in enumerate(page["metas"], 1) if m.get("label"))
+        title = page["meta"].get("title", SITE_NAME)
+        desc = page["meta"].get("description", TAGLINE)
+        doc = PAGE.replace("{prefix}", prefix)
+        doc = doc.replace("{title}", html.escape(title))
+        doc = doc.replace("{description}", html.escape(desc))
+        doc = doc.replace("{canonical}", SITE_URL + url(page))
+        doc = doc.replace("{og_image}", SITE_URL + "/og.png")
+        doc = doc.replace("{brand}", SITE_NAME)
+        doc = doc.replace("{nav}", nav)
+        doc = doc.replace("{rail}", rail)
+        doc = doc.replace("{body}", "\n".join(page["beats"]))
+        doc = doc.replace("{tagline}", TAGLINE)
+        # prefix root-relative links/assets authored in content
+        doc = doc.replace('href="/', f'href="{prefix}')
+        doc = doc.replace('src="/', f'src="{prefix}')
+        out_dir = DIST if not page["slug"] else os.path.join(DIST, page["slug"])
+        with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as fh:
+            fh.write(doc)
+    print(f"build: wrote {len(pages)} page(s) -> dist/")
     return 0
 
 
@@ -176,17 +220,19 @@ PAGE = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AgentElmer — the agent is you</title>
-<meta name="description" content="A deterministic, provable software factory. The agent is you; the AI is the instrument.">
+<title>{title}</title>
+<meta name="description" content="{description}">
+<link rel="canonical" href="{canonical}">
 <meta name="theme-color" content="#0b0c0e">
 <meta property="og:type" content="website">
-<meta property="og:title" content="AgentElmer — the agent is you">
-<meta property="og:description" content="A deterministic, provable software factory. The agent is you; the AI is the instrument.">
-<meta property="og:image" content="og.png">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{description}">
+<meta property="og:image" content="{og_image}">
+<meta property="og:url" content="{canonical}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@makeroftools">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="style.css">
+<link rel="icon" href="{prefix}favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="{prefix}style.css">
 <noscript><style>.beat__inner{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
@@ -196,14 +242,10 @@ PAGE = """<!DOCTYPE html>
 {rail}
 </nav>
 <header class="topbar">
-  <span class="mark"><img src="elmer.svg" alt="" class="mark__elmer">AgentElmer</span>
+  <a class="mark" href="{prefix}"><img src="{prefix}elmer.svg" alt="" class="mark__elmer">{brand}</a>
   <nav class="topnav">
-    <a href="#capabilities">Capabilities</a>
-    <a href="#architecture">How it works</a>
-    <a href="#products">Products</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
-    <a href="#cta" class="cta">Get started</a>
+{nav}
+    <a href="{prefix}pricing/" class="cta">Get started</a>
   </nav>
 </header>
 <main>
@@ -211,9 +253,9 @@ PAGE = """<!DOCTYPE html>
 </main>
 <footer class="footer">
   <span>Creative Development Systems · <a href="https://x.com/makeroftools">@makeroftools</a></span>
-  <span class="muted">The agent is you. The AI is the instrument.</span>
+  <span class="muted">{tagline}</span>
 </footer>
-<script src="app.js"></script>
+<script src="{prefix}app.js"></script>
 </body>
 </html>
 """
