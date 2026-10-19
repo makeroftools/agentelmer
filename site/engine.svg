@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 380" role="img" aria-label="The Agent Elmer engine, layer by layer">
+  <g stroke="#57d1c6" stroke-opacity="0.35" stroke-width="1.4">
+    <line x1="120" y1="72" x2="120" y2="266"/>
+    <line x1="400" y1="72" x2="400" y2="266"/>
+  </g>
+  <g font-family="ui-monospace, monospace" font-size="12.5" text-anchor="middle">
+    <rect x="120" y="46" width="280" height="44" rx="11" fill="#12141a" stroke="#e8a45c" stroke-width="2"/>
+    <text x="260" y="73" fill="#f3f1ea">agents</text>
+    <rect x="120" y="102" width="280" height="44" rx="11" fill="#12141a" stroke="#57d1c6" stroke-width="2"/>
+    <text x="260" y="129" fill="#f3f1ea">network of components</text>
+    <rect x="120" y="158" width="280" height="44" rx="11" fill="#12141a" stroke="#57d1c6" stroke-width="2"/>
+    <text x="260" y="185" fill="#f3f1ea">runtime</text>
+    <rect x="120" y="214" width="280" height="44" rx="11" fill="#12141a" stroke="#8f83ff" stroke-width="2"/>
+    <text x="260" y="241" fill="#f3f1ea">placement</text>
+    <rect x="120" y="270" width="280" height="44" rx="11" fill="#12141a" stroke="#8f83ff" stroke-width="2"/>
+    <text x="260" y="297" fill="#f3f1ea">transport</text>
+  </g>
+  <text x="260" y="352" text-anchor="middle" font-family="ui-monospace, monospace" font-size="12.5" fill="#a4aab3">identity stays; endpoints are replaceable</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" role="img" aria-label="Elmer, surrounded by a lattice of components">
+  <defs>
+    <radialGradient id="hglow" cx="50%" cy="52%" r="55%">
+      <stop offset="0" stop-color="#e8a45c" stop-opacity="0.22"/>
+      <stop offset="0.6" stop-color="#8f83ff" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hshell" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2b872"/>
+      <stop offset="1" stop-color="#cf8640"/>
+    </linearGradient>
+    <pattern id="hgrid" width="52" height="52" patternUnits="userSpaceOnUse">
+      <path d="M52 0 L0 0 0 52" fill="none" stroke="#f3f1ea" stroke-opacity="0.05"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="520" height="520" fill="url(#hgrid)"/>
+  <circle cx="260" cy="278" r="250" fill="url(#hglow)"/>
+
+  <!-- orbital links + nodes -->
+  <g stroke="#57d1c6" stroke-opacity="0.4" stroke-width="1.3">
+    <line x1="260" y1="278" x2="86" y2="120"/>
+    <line x1="260" y1="278" x2="438" y2="128"/>
+    <line x1="260" y1="278" x2="70" y2="392"/>
+    <line x1="260" y1="278" x2="452" y2="384"/>
+    <line x1="260" y1="278" x2="262" y2="64"/>
+  </g>
+  <g>
+    <circle cx="86" cy="120" r="13" fill="#12141a" stroke="#e8a45c" stroke-width="2"/>
+    <circle cx="438" cy="128" r="13" fill="#12141a" stroke="#57d1c6" stroke-width="2"/>
+    <circle cx="70" cy="392" r="13" fill="#12141a" stroke="#8f83ff" stroke-width="2"/>
+    <circle cx="452" cy="384" r="13" fill="#12141a" stroke="#57d1c6" stroke-width="2"/>
+    <circle cx="262" cy="64" r="13" fill="#12141a" stroke="#e8a45c" stroke-width="2"/>
+  </g>
+
+  <!-- Elmer -->
+  <g class="float">
+    <ellipse cx="250" cy="392" rx="150" ry="14" fill="#000" opacity="0.30"/>
+    <g transform="translate(255 300) scale(0.94) translate(-210 -176)">
+      <g stroke="#6d4322" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M118 196 L104 236 Q102 244 111 244 L126 244 Q132 244 133 236 L140 200 Z" fill="#d99a54"/>
+        <path d="M286 196 L290 236 Q291 244 299 244 L314 244 Q322 244 320 236 L306 200 Z" fill="#d99a54"/>
+        <path d="M86 186 L58 196 L88 204 Z" fill="#e9b877"/>
+        <path d="M298 170 Q300 138 330 136 Q360 134 368 162 Q373 184 352 197 Q337 205 320 198 Z" fill="#f0c48c"/>
+        <path d="M76 200 Q76 96 200 96 Q324 96 324 200 Z" fill="url(#hshell)"/>
+        <path d="M200 98 L200 200" fill="none" stroke-width="3.6"/>
+        <path d="M141 104 Q128 150 126 202" fill="none" stroke-width="3.6"/>
+        <path d="M259 104 Q272 150 274 202" fill="none" stroke-width="3.6"/>
+        <path d="M60 150 Q200 168 340 150" fill="none" stroke-width="3.6"/>
+      </g>
+      <circle cx="347" cy="159" r="9" fill="#fff8ee"/>
+      <circle cx="349" cy="160" r="4.6" fill="#2a1a0c"/>
+      <circle cx="351" cy="158" r="1.5" fill="#fff8ee"/>
+    </g>
+  </g>
+</svg>

@@ -31,6 +31,17 @@
   document.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  // Theme toggle.
+  const themer = document.getElementById("themer");
+  if (themer) {
+    themer.addEventListener("click", () => {
+      const cur = document.documentElement.getAttribute("data-theme");
+      const next = cur === "light" ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("ae-theme", next); } catch (e) {}
+    });
+  }
+
   // Arrow / page keys jump between beats (a quiet present mode).
   const goto = (i) => {
     const j = Math.max(0, Math.min(beats.length - 1, i));

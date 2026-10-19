@@ -223,7 +223,9 @@ PAGE = """<!DOCTYPE html>
 <title>{title}</title>
 <meta name="description" content="{description}">
 <link rel="canonical" href="{canonical}">
-<meta name="theme-color" content="#0b0c0e">
+<meta name="theme-color" content="#0a0b0f">
+<meta name="color-scheme" content="dark light">
+<script>(function(){try{var t=localStorage.getItem('ae-theme');if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{description}">
@@ -246,13 +248,14 @@ PAGE = """<!DOCTYPE html>
   <nav class="topnav">
 {nav}
     <a href="{prefix}pricing/" class="cta">Get started</a>
+    <button class="themer" id="themer" type="button" aria-label="Toggle light and dark theme" title="Toggle theme"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"/></svg></button>
   </nav>
 </header>
 <main>
 {body}
 </main>
 <footer class="footer">
-  <span>Creative Development Systems · <a href="https://x.com/makeroftools">@makeroftools</a></span>
+  <span>Creative Development Systems · <a href="https://x.com/makeroftools">@makeroftools</a> · <a href="mailto:info@prodatalab.com">info@prodatalab.com</a></span>
   <span class="muted">{tagline}</span>
 </footer>
 <script src="{prefix}app.js"></script>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" role="img" aria-label="A component is a network; a network is a component">
+  <!-- level 1: a component -->
+  <g>
+    <rect x="30" y="110" width="120" height="80" rx="14" fill="none" stroke="#e8a45c" stroke-width="2.4"/>
+    <circle cx="60" cy="150" r="7" fill="#e8a45c"/>
+    <circle cx="120" cy="150" r="7" fill="#e8a45c"/>
+    <text x="90" y="215" text-anchor="middle" font-family="ui-monospace, monospace" font-size="13" fill="#a4aab3">component</text>
+  </g>
+
+  <path d="M158 150 h40" stroke="#57d1c6" stroke-width="2.2" fill="none"/>
+  <path d="M192 144 l8 6 -8 6" stroke="#57d1c6" stroke-width="2.2" fill="none"/>
+
+  <!-- level 2: the component is a network -->
+  <g>
+    <rect x="210" y="70" width="250" height="160" rx="18" fill="none" stroke="#57d1c6" stroke-width="2.2" stroke-dasharray="6 6"/>
+    <g fill="none" stroke="#57d1c6" stroke-width="1.6">
+      <line x1="270" y1="115" x2="360" y2="150"/>
+      <line x1="360" y1="150" x2="290" y2="190"/>
+      <line x1="360" y1="150" x2="410" y2="190"/>
+    </g>
+    <circle cx="270" cy="115" r="10" fill="#12141a" stroke="#e8a45c" stroke-width="2"/>
+    <circle cx="360" cy="150" r="12" fill="#12141a" stroke="#57d1c6" stroke-width="2"/>
+    <circle cx="290" cy="190" r="10" fill="#12141a" stroke="#e8a45c" stroke-width="2"/>
+    <circle cx="410" cy="190" r="10" fill="#12141a" stroke="#8f83ff" stroke-width="2"/>
+    <text x="335" y="256" text-anchor="middle" font-family="ui-monospace, monospace" font-size="13" fill="#a4aab3">a network of components</text>
+  </g>
+
+  <path d="M468 150 h40" stroke="#8f83ff" stroke-width="2.2" fill="none"/>
+  <path d="M502 144 l8 6 -8 6" stroke="#8f83ff" stroke-width="2.2" fill="none"/>
+
+  <!-- level 3: the network is a component -->
+  <g>
+    <rect x="520" y="110" width="120" height="80" rx="14" fill="none" stroke="#8f83ff" stroke-width="2.4"/>
+    <circle cx="550" cy="150" r="7" fill="#8f83ff"/>
+    <circle cx="610" cy="150" r="7" fill="#8f83ff"/>
+    <text x="580" y="215" text-anchor="middle" font-family="ui-monospace, monospace" font-size="13" fill="#a4aab3">component</text>
+  </g>
+  <text x="580" y="72" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#f3f1ea">…recursively</text>
+</svg>
