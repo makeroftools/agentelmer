@@ -242,6 +242,9 @@ main { position: relative; z-index: 1; }
 .stats { display: flex; flex-wrap: wrap; gap: 2.5rem; margin-top: 2.5rem; }
 .stat__n { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); color: var(--fg); line-height: 1; }
 .stat__l { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 0.5rem; }
+.values { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-top: 2rem; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.values span { display: inline-flex; align-items: center; gap: 0.5rem; }
+.values span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--warm); }
 
 /* buttons */
 .button { display: inline-block; margin: 0.4rem 0.6rem 0 0; padding: 0.85rem 1.6rem; border-radius: 999px; background: var(--fg); color: var(--bg); font-weight: 600; text-decoration: none; transition: background 0.25s ease, transform 0.25s ease; }
