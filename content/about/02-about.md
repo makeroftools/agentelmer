@@ -19,7 +19,7 @@ and **stopped two pages in**: the architecture was clever, and *data-centric* â€
 one global chain, agreed by everyone. He knew it was built wrong. He did **not**
 set out to rebuild it.
 
-Then, in **2017**, hearing about **Holochain**, he knew immediately: here was the
+Then, in **2018**, hearing about **Holochain**, he knew immediately: here was the
 right architecture for crypto and self-sovereignty â€” **agent-centric**,
 peer-to-peer, with no global singleton. His own work found its place beside it:
 the deterministic, component-based software substrate that belongs to an
