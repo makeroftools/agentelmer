@@ -15,9 +15,15 @@ him software was built wrong — needless complexity, fragility, no reuse.
 *"Everything is a component,"* he wrote. *"Everything!"*
 
 In **October 2014**, hearing about smart contracts, he opened the Bitcoin paper
-and **stopped two pages in**: the architecture was clever, and *data-centric*,
-and he wanted **agent-centric**. He has been building the alternative ever
-since — deterministic, content-addressed, and now provable.
+and **stopped two pages in**: the architecture was clever, and *data-centric* —
+one global chain, agreed by everyone. He knew it was built wrong. He did **not**
+set out to rebuild it.
+
+Then, in **2017**, hearing about **Holochain**, he knew immediately: here was the
+right architecture for crypto and self-sovereignty — **agent-centric**,
+peer-to-peer, with no global singleton. His own work found its place beside it:
+the deterministic, component-based software substrate that belongs to an
+agent-centric world.
 
 - **Creative Development Systems** — founder, Nov 2013 – present · Denver, CO
 - **ProDataLab** — R&D, 2003–2013
