@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0.4">
+      <stop offset="0" stop-color="#f4f2ec"/>
+      <stop offset="0.62" stop-color="#e6a15a"/>
+      <stop offset="1" stop-color="#5ad1c8"/>
+    </linearGradient>
+    <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M100 0 L0 0 0 100" fill="none" stroke="#f4f2ec" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#0b0c0e"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <g transform="translate(96,92) scale(2.4)" fill="none" stroke="#e6a15a" stroke-width="3"
+     stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 40 C10 24 20 16 30 16 C40 16 48 24 48 40 Z"/>
+    <path d="M30 16 L30 40"/>
+    <path d="M20 20 L24 40"/>
+    <path d="M40 20 L36 40"/>
+    <circle cx="52" cy="34" r="5.5"/>
+    <circle cx="54" cy="32.5" r="1.4" fill="#e6a15a" stroke="none"/>
+    <path d="M20 40 L16 48"/>
+    <path d="M40 40 L44 48"/>
+  </g>
+  <text x="96" y="432" font-family="Georgia, 'Times New Roman', serif" font-size="96" fill="url(#title)">The agent is you.</text>
+  <text x="99" y="502" font-family="system-ui, Helvetica, Arial, sans-serif" font-size="38" fill="#b9bec4">The AI is the instrument.</text>
+  <text x="99" y="578" font-family="monospace" font-size="22" letter-spacing="8" fill="#5ad1c8">AGENTELMER</text>
+</svg>
