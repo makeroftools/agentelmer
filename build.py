@@ -31,7 +31,7 @@ SITE = os.path.join(ROOT, "site")
 DIST = os.path.join(ROOT, "dist")
 
 SITE_URL = "https://agent-elmer.prodatalab.com"
-SITE_NAME = "AgentElmer"
+SITE_NAME = "Agent Elmer"
 TAGLINE = "The agent is you. The AI is the instrument."
 BEAT_KEYS = ("id", "kind", "label", "title", "subtitle")
 PAGE_KEYS = ("title", "description", "nav", "order")

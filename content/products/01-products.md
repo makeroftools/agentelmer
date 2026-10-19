@@ -3,13 +3,13 @@ kind: prose
 label: Products
 title: An engine, and a world.
 
-Two products, one idea. **AgentElmer** is the reliable engine underneath — available now. **Creative Development** is the world you build with it — on the road.
+Two products, one idea. **Agent Elmer** is the reliable engine underneath — available now. **Creative Development** is the world you build with it — on the road.
 
 ```html
 <div class="grid">
   <div class="card">
     <span class="tag">Product A · available now</span>
-    <h3>AgentElmer</h3>
+    <h3>Agent Elmer</h3>
     <p>The agent-centric engine: a bounded, deterministic runtime for durable, parallel agents.</p>
     <ul>
       <li>Everything is a component</li>
@@ -17,7 +17,7 @@ Two products, one idea. **AgentElmer** is the reliable engine underneath — ava
       <li>Fail-closed by construction</li>
       <li>Free core · Pro for teams</li>
     </ul>
-    <p><a href="/agent-elmer/">Explore AgentElmer →</a></p>
+    <p><a href="/agent-elmer/">Explore Agent Elmer →</a></p>
   </div>
   <div class="card">
     <span class="tag">Product B · on the road</span>

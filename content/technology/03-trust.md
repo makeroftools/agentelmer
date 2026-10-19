@@ -3,7 +3,7 @@ kind: prose
 label: Trust and security
 title: Secure by construction.
 
-AgentElmer assumes nothing about its environment and grants nothing by default. Every capability is explicit, scoped, and recorded — and the parts that touch your work cannot be bypassed.
+Agent Elmer assumes nothing about its environment and grants nothing by default. Every capability is explicit, scoped, and recorded — and the parts that touch your work cannot be bypassed.
 
 - **Default-deny capabilities.** No ambient access to the network, filesystem, secrets, or clock. Each access is a declared, recorded grant.
 - **The runtime is not an authority.** A running component cannot make the decisions that belong to the controller, gateway, applier, or verifier. An attempted effect is refused and logged.
