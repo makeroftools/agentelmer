@@ -93,7 +93,8 @@ body::before {
   font-size: 0.8rem;
 }
 .mark__elmer { width: 1.55rem; height: 1.55rem; color: var(--warm); display: block; }
-.elmer-figure { max-width: 320px; }
+.elmer-figure { max-width: 380px; }
+.elmer-figure img { width: 100%; height: auto; display: block; }
 .topnav { display: flex; gap: 1.6rem; align-items: center; }
 .topnav a {
   color: var(--muted);
