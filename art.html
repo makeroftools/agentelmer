@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Art — Agent Elmer</title>
+  <meta name="description" content="Meet Elmer: the accepted character art for Agent Elmer, derived deterministically from a frozen character bible.">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script src="assets/theme.js"></script>
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Agent Elmer home">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M16 3v26M3 16h26M7 7l18 18M25 7L7 25" stroke="currentColor" stroke-width="0.7" opacity="0.45"/>
+        <circle cx="16" cy="16" r="4.2" fill="currentColor"/>
+      </svg>
+      <span class="brand__name">Agent Elmer</span>
+      <span class="brand__tag">CBP</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="topnav" id="site-nav" aria-label="Primary">
+      <a href="product.html" data-nav="product">Product</a>
+      <a href="pricing.html" data-nav="pricing">Pricing</a>
+      <a href="investors.html" data-nav="investors">Investors</a>
+      <a href="docs.html" data-nav="docs">Docs</a>
+      <a href="art.html" data-nav="art">Art</a>
+      <a class="cta" href="docs.html#start">Start</a>
+      <button class="themer" type="button" aria-label="Switch theme">◑</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="section hero" aria-labelledby="art-title">
+      <div class="wrap hero__grid">
+        <div>
+          <p class="eyebrow">Meet Elmer</p>
+          <h1 class="hero__title" id="art-title">The character behind the engine.</h1>
+          <p class="sub">Elmer is a wry, lanky turtle: long neck, heavy lids, a half-smile, and a habit of finding the one amber node worth keeping. The accepted art is a frozen character bible — every later draw, strip, and crop is checked against it.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="product.html">See the running system</a>
+            <a class="btn" href="docs.html#evidence">Evidence and sources</a>
+          </div>
+          <div class="hero__meta">
+            <span>Original character art</span>
+            <span>No model-written text</span>
+            <span>Deterministic derivations</span>
+          </div>
+        </div>
+        <figure class="art-hero">
+          <img src="assets/elmer/elmer-hero.webp" width="1264" height="848" loading="eager" decoding="async" alt="Elmer, a lanky green turtle, standing on a riverbank in a sunlit marsh.">
+          <figcaption>Hero draw. Frontal, both eyes visible, no props or lettering.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="gallery-title">
+      <div class="wrap">
+        <p class="eyebrow">The accepted set</p>
+        <h2 id="gallery-title">One identity, five roles.</h2>
+        <p class="lede">The operator accepted one recommended draw per role. Alternates and rejected draws stay recorded as residue; they are not published. The character sheet is the reference for every future draw.</p>
+        <div class="gallery">
+          <figure class="figure">
+            <img src="assets/elmer/elmer-avatar.webp" width="512" height="512" loading="lazy" decoding="async" alt="Portrait of Elmer the turtle with a wry half-smile on a warm cream backdrop.">
+            <figcaption><strong>Avatar portrait.</strong> Square 1:1 bust on a plain warm backdrop.</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/elmer/elmer-neutral.webp" width="1264" height="848" loading="lazy" decoding="async" alt="Full-body three-quarter view of Elmer standing on a plain cream background.">
+            <figcaption><strong>Neutral full body.</strong> Three-quarter view on plain cream; the best cutout source.</figcaption>
+          </figure>
+          <figure class="figure">
+            <img src="assets/elmer/elmer-front.webp" width="284" height="500" loading="lazy" decoding="async" alt="Front view of Elmer cropped from the accepted character sheet.">
+            <figcaption><strong>Front turnaround.</strong> A deterministic crop of the sheet, not a new draw.</figcaption>
+          </figure>
+          <figure class="figure figure--wide">
+            <img src="assets/elmer/elmer-character-sheet.webp" width="1264" height="848" loading="lazy" decoding="async" alt="Elmer character sheet: four full-body turnarounds above four expression heads.">
+            <figcaption><strong>Character sheet.</strong> Four turnarounds and four expressions. Frozen as the bible; no text or labels.</figcaption>
+          </figure>
+          <figure class="figure figure--wide">
+            <img src="assets/elmer/elmer-strip.webp" width="1264" height="848" loading="lazy" decoding="async" alt="Four wordless cartoon panels in which Elmer finds an amber node and ends among fireflies.">
+            <figcaption><strong>Wordless strip.</strong> Four panels: find the node, inspect it, sit with it, end among fireflies.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" aria-labelledby="provenance-title">
+      <div class="wrap body-copy">
+        <p class="eyebrow">Provenance</p>
+        <h2 id="provenance-title">Drawn once. Derived the same way every time.</h2>
+        <p>The accepted masters are recorded in the Elmer work track, together with the prompt, model, reference image, and SHA-256 of every candidate. The published files here are deterministic WebP derivations: metadata stripped, fixed encoder parameters, and a checked manifest of source and output hashes.</p>
+        <p>The front turnaround is a fixed crop of the accepted character sheet (<span class="mono">284x500+24+40</span>), so it is reproducible rather than a fresh model draw. All art is wordless; any future lettering must come from a deterministic text layer, never from asking an image model to spell.</p>
+        <ul>
+          <li>The art was drawn from a turtle reference photograph, not from the station or album cover.</li>
+          <li>No station building, signage, logo, musical instrument, or cover composition appears in any accepted image.</li>
+          <li>Publication to a static host is a separate operator act; this page prepares the projection.</li>
+        </ul>
+        <div class="notice notice--info">
+          <p><strong>Verify it.</strong> From the repository root, run <span class="mono">python3 scripts/elmer_assets.py verify</span> and <span class="mono">python3 scripts/check-site.py</span>. Both are deterministic and write nothing.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div>
+        <p><strong>Agent Elmer</strong> — a deterministic runtime for durable, parallel agents.</p>
+        <p>This site is a projection of the admitted story. It is not authority. <a href="docs.html#evidence">Evidence and sources</a>.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <nav aria-label="Product links">
+          <a href="product.html">The running system</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="docs.html#start">Start</a>
+        </nav>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <nav aria-label="Company links">
+          <a href="investors.html">Investors</a>
+          <a href="docs.html">Docs</a>
+          <a href="art.html">Art</a>
+          <a href="docs.html#evidence">Evidence</a>
+        </nav>
+      </div>
+    </div>
+    <p class="footer__legal">No trackers. No third-party fonts. No external scripts. Content-addressed by the site check.</p>
+  </footer>
+</body>
+</html>

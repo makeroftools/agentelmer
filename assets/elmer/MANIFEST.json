@@ -1,0 +1,103 @@
+{
+  "assets": [
+    {
+      "alt": "Elmer, a lanky green turtle, standing on a riverbank in a sunlit marsh.",
+      "bytes": 105466,
+      "crop": null,
+      "dimensions": [
+        1264,
+        848
+      ],
+      "name": "hero",
+      "output": "elmer-hero.webp",
+      "resize": null,
+      "role": "hero",
+      "sha256": "f31753ffed82d20e9bfbc77f50f11cd3c8b36a63fed0a89812a22c3832627a74",
+      "source": "elmer-hero.png",
+      "source_sha256": "f5c66b9b29c74c50c074fb084d44993ba292bb00e57cd6650fd033d6803d3396"
+    },
+    {
+      "alt": "Portrait of Elmer the turtle with a wry half-smile on a warm cream backdrop.",
+      "bytes": 18176,
+      "crop": null,
+      "dimensions": [
+        512,
+        512
+      ],
+      "name": "avatar",
+      "output": "elmer-avatar.webp",
+      "resize": "512x512",
+      "role": "avatar",
+      "sha256": "2003b04aec33f6c6139d21fcc1ca19f4f4af7a9ea5b1a6bce650b4776d1b7558",
+      "source": "elmer-avatar.png",
+      "source_sha256": "0e3e3605cdbf951d7deed747d7b20a2c70dae44023d9b0d3d95decf004b45989"
+    },
+    {
+      "alt": "Full-body three-quarter view of Elmer standing on a plain cream background.",
+      "bytes": 29720,
+      "crop": null,
+      "dimensions": [
+        1264,
+        848
+      ],
+      "name": "neutral",
+      "output": "elmer-neutral.webp",
+      "resize": null,
+      "role": "neutral-three-quarter",
+      "sha256": "755fa929c9e30b1489fc226160c15c874510303282b3d9bcbaf5e971f8221337",
+      "source": "elmer-neutral.png",
+      "source_sha256": "c73c99cbde153e3fabce6a46a9d7af0663e669b8d77d3f8df619d345a8a7d171"
+    },
+    {
+      "alt": "Front view of Elmer cropped from the accepted character sheet.",
+      "bytes": 15786,
+      "crop": "284x500+24+40",
+      "dimensions": [
+        284,
+        500
+      ],
+      "name": "front",
+      "output": "elmer-front.webp",
+      "resize": null,
+      "role": "front-turnaround",
+      "sha256": "a146984ec01ec9aed363fd54b0c44b37bda65f938638c80bef3ddb2e4de9fee3",
+      "source": "elmer-character-sheet.png",
+      "source_sha256": "395f5236d278c1dbcc8b11f503af831fffb9c1b1763b78ee6fb2a048ae06fbfa"
+    },
+    {
+      "alt": "Elmer character sheet: four full-body turnarounds above four expression heads.",
+      "bytes": 78504,
+      "crop": null,
+      "dimensions": [
+        1264,
+        848
+      ],
+      "name": "sheet",
+      "output": "elmer-character-sheet.webp",
+      "resize": null,
+      "role": "character-bible",
+      "sha256": "812a9d93345e70889eb4557d2208d7778d7a83b6be39751faa8753030f00d5ab",
+      "source": "elmer-character-sheet.png",
+      "source_sha256": "395f5236d278c1dbcc8b11f503af831fffb9c1b1763b78ee6fb2a048ae06fbfa"
+    },
+    {
+      "alt": "Four wordless cartoon panels in which Elmer finds an amber node and ends among fireflies.",
+      "bytes": 135712,
+      "crop": null,
+      "dimensions": [
+        1264,
+        848
+      ],
+      "name": "strip",
+      "output": "elmer-strip.webp",
+      "resize": null,
+      "role": "wordless-strip",
+      "sha256": "8df205596d9f90d326056c4b44813547a3d551dd2e27d5a2c6492d71683263fe",
+      "source": "elmer-strip-01.png",
+      "source_sha256": "b4c32fd70c880a7d9c6a1f64602d37d61de5c1a436871263758b71db924ba766"
+    }
+  ],
+  "note": "Derived from the accepted Elmer masters in the elmer work track. Masters are recorded residue, not authority; the accepted decision is _tracks/elmer/CLAMP.md. Rebuild with scripts/elmer_assets.py build.",
+  "schema": "elmer.assets/v1",
+  "tool": "Version: ImageMagick 7.1.2-18 Q16 x86_64 23822 https://imagemagick.org"
+}

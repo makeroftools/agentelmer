@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Docs — start and verify Agent Elmer</title>
+  <meta name="description" content="Start and verify Agent Elmer: cbp doctor, cbp check system, just net services status, cbp track list, and the deterministic governance floor.">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script src="assets/theme.js"></script>
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="Agent Elmer home">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M16 3v26M3 16h26M7 7l18 18M25 7L7 25" stroke="currentColor" stroke-width="0.7" opacity="0.45"/>
+        <circle cx="16" cy="16" r="4.2" fill="currentColor"/>
+      </svg>
+      <span class="brand__name">Agent Elmer</span>
+      <span class="brand__tag">CBP</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="topnav" id="site-nav" aria-label="Primary">
+      <a href="product.html" data-nav="product">Product</a>
+      <a href="pricing.html" data-nav="pricing">Pricing</a>
+      <a href="investors.html" data-nav="investors">Investors</a>
+      <a href="docs.html" data-nav="docs">Docs</a>
+      <a href="art.html" data-nav="art">Art</a>
+      <a class="cta" href="docs.html#start">Start</a>
+      <button class="themer" type="button" aria-label="Switch theme">◑</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="section hero" aria-labelledby="docs-title">
+      <div class="wrap">
+        <p class="eyebrow">Docs · start and verify</p>
+        <h1 id="docs-title">Trust the floor, not the demo.</h1>
+        <p class="sub">Four commands tell you whether the environment, the composed system, the services, and the work tracks are what they claim to be. Run them from the repository roots. The site check verifies this website.</p>
+      </div>
+    </section>
+
+    <section class="section" id="start" aria-labelledby="start-title">
+      <div class="wrap">
+        <p class="eyebrow">01 · Start</p>
+        <h2 id="start-title">Three commands to a known state.</h2>
+        <p class="lede">From the CBP repository root:</p>
+        <pre><code>cbp doctor
+cbp check system
+cbp track list</code></pre>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th scope="col">Command</th><th scope="col">What it proves</th><th scope="col">Expected</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>cbp doctor</code></td><td>The front door resolves its agent, track, project, and tool dispatchers.</td><td>Exit 0; the dispatcher table is rendered.</td></tr>
+              <tr><td><code>cbp check system</code></td><td>The composed system check runs: repo line, CBP selftests, durable-pi line, listening services.</td><td>Exit 0; <code>verify-system: OK</code>.</td></tr>
+              <tr><td><code>cbp track list</code></td><td>The work tracks and their worktrees, branches, and states are visible.</td><td>Exit 0; one row per track.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="verify" aria-labelledby="verify-title">
+      <div class="wrap">
+        <p class="eyebrow">02 · Verify the services</p>
+        <h2 id="verify-title">Four green rows, one topology.</h2>
+        <p class="lede">From the durable-pi repository root, in the operator environment:</p>
+        <pre><code>just net services status</code></pre>
+        <p class="body-copy" style="margin-top:1rem">Expect the backend, hub, CBP device, and proactive daemon to report active. The command reads the operator's device environment; credentials are supplied by the environment and never printed by this site. The endpoints are loopback-only:</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th scope="col">Service</th><th scope="col">Endpoint</th><th scope="col">Unit</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>durable-pi backend</td><td><code>127.0.0.1:4780</code></td><td><code>dpi-backend</code></td></tr>
+              <tr><td>durable-pi hub</td><td><code>127.0.0.1:4781</code></td><td><code>dpi-hub</code></td></tr>
+              <tr><td>CBP device</td><td><code>127.0.0.1:8790</code></td><td><code>cbp-device</code></td></tr>
+              <tr><td>Proactive daemon</td><td>store <code>.cbp/proactive</code></td><td><code>cbp-proactive</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small muted" style="margin-top:1rem">You can also ask the proactive daemon directly for its heartbeat status. A fresh heartbeat is the difference between "the unit is active" and "the loop is actually ticking".</p>
+      </div>
+    </section>
+
+    <section class="section" id="tracks" aria-labelledby="tracks-title">
+      <div class="wrap">
+        <p class="eyebrow">03 · Work tracks</p>
+        <h2 id="tracks-title">Inspect a bounded line of work.</h2>
+        <p class="lede">A work track is a bounded line of development that depends on a sandbox. Inspect it without reconstructing a chat transcript:</p>
+        <pre><code>cbp track status &lt;id&gt;
+cbp track report &lt;id&gt;
+cbp track logs &lt;id&gt;</code></pre>
+        <p class="small muted" style="margin-top:0.8rem">The legacy lane commands forward through the same registry with a deprecation warning. Machine identifiers stay qualifier-first; the human grammar is verb → object → qualifier.</p>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="floor" aria-labelledby="floor-title">
+      <div class="wrap">
+        <p class="eyebrow">04 · The deterministic floor</p>
+        <h2 id="floor-title">Nothing lands below the floor.</h2>
+        <p class="lede">The governance floor validates every record and the committed registry, runs the stage controller, and executes every Transformer, gate, and execution Component selftest. It is fail-closed.</p>
+        <pre><code>bash scripts/governance.sh
+python3 tools/run.py governance.check
+python3 tools/run.py governance.selftest</code></pre>
+        <p class="body-copy" style="margin-top:1rem">A registered tool is invoked through the gateway. A raw invocation of a registered tool is refused by design. If the floor cannot pass, it refuses; there is no partial success.</p>
+      </div>
+    </section>
+
+    <section class="section" id="site-check" aria-labelledby="site-check-title">
+      <div class="wrap">
+        <p class="eyebrow">05 · This website</p>
+        <h2 id="site-check-title">A projection with its own check.</h2>
+        <p class="lede">The site is static HTML, CSS, and JavaScript. No framework, no build step, no third-party fonts, no trackers. The check verifies internal links, fragments, forbidden strings, and deterministic hashes.</p>
+        <pre><code>python3 scripts/check-site.py</code></pre>
+        <p class="body-copy" style="margin-top:1rem">Run it from the worktree root. It exits non-zero on a broken internal link, a missing anchor, an absolute home path, a secret-like string, a stub marker, or a non-local script or stylesheet. It prints a stable SHA-256 list for the site files.</p>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="evidence" aria-labelledby="evidence-title">
+      <div class="wrap">
+        <p class="eyebrow">06 · Evidence map</p>
+        <h2 id="evidence-title">Every claim has a source.</h2>
+        <p class="lede">The site is a projection of the admitted story. These are the owning sources, by name, for the claims on this site.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th scope="col">Claim</th><th scope="col">Owning source</th><th scope="col">Status</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Durable restart resumes a job once; approval survives a restart.</td>
+                <td>Investor evidence register E4/E5; durable-pi recovery and store tests.</td>
+                <td><span class="badge badge--verified">Verified by run</span></td>
+              </tr>
+              <tr>
+                <td>Runtime, transport, and delegation selftests pass.</td>
+                <td>Investor evidence register E24–E26; CBP selftests.</td>
+                <td><span class="badge badge--verified">Verified by run</span></td>
+              </tr>
+              <tr>
+                <td>Content addresses are recomputed; evidence never enters addressed output.</td>
+                <td>Ratified contracts SPEC-PRO-0062–0066; investor evidence E16/E17.</td>
+                <td><span class="badge badge--verified">Verified from source</span></td>
+              </tr>
+              <tr>
+                <td>Fail-closed is a kernel law; the operator is the sole ratifier.</td>
+                <td>Kernel laws 2 and 4; investor evidence E20.</td>
+                <td><span class="badge badge--verified">Verified from source</span></td>
+              </tr>
+              <tr>
+                <td>A live model run replayed byte-identically.</td>
+                <td>Investor evidence E30; handoff record. Documentary, earlier line.</td>
+                <td><span class="badge badge--verified">Recorded</span></td>
+              </tr>
+              <tr>
+                <td>The proactive loop and the four services are live.</td>
+                <td>Current handoff and workboard; <code>cbp check system</code>; fresh heartbeat.</td>
+                <td><span class="badge badge--verified">Verified by run</span></td>
+              </tr>
+              <tr>
+                <td>A three-worktree kill/restart/join transcript is published.</td>
+                <td>No transcript. The demo runbook exists; evidence pending.</td>
+                <td><span class="badge badge--pending">Not claimed</span></td>
+              </tr>
+              <tr>
+                <td>Pricing, customers, revenue, market size, and team credentials.</td>
+                <td>Not in the repositories. Operator-owned; not invented.</td>
+                <td><span class="badge badge--draft">Draft</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small muted" style="margin-top:1rem">The exact claims-to-source mapping, including repository-relative paths and the file hash list, is maintained in <span class="mono">SITE.md</span> alongside this site.</p>
+      </div>
+    </section>
+
+    <section class="section" id="glossary" aria-labelledby="glossary-title">
+      <div class="wrap">
+        <p class="eyebrow">07 · Vocabulary</p>
+        <h2 id="glossary-title">Qualify the terms.</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th scope="col">Term</th><th scope="col">Meaning on this site</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>work track</td><td>A bounded line of development that depends on a sandbox. It is not a sandbox and not a kind of sandbox.</td></tr>
+              <tr><td>sandbox</td><td>A confined environment an agent can work in, qualified by kind and declared capabilities. It is never authority.</td></tr>
+              <tr><td>projection</td><td>A human-facing rendering of the same semantic action. The registry is the index; the implementation is the authority.</td></tr>
+              <tr><td>action triple</td><td><span class="mono">(verb, object, qualifiers)</span>. Natural-language order is verb → object → qualifier; machine ids stay qualifier-first.</td></tr>
+              <tr><td>operator gate</td><td>A signed record the operator opens or closes to authorize a protected action. The operator is the sole ratifier.</td></tr>
+              <tr><td>fail-closed</td><td>A check that cannot pass must refuse. There is no partial success and no silent pass.</td></tr>
+              <tr><td>validation floor</td><td>The deterministic check suite a change must pass before it lands.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="investors.html">Investor one-pager</a>
+          <a class="btn" href="product.html">The running system</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__grid">
+      <div>
+        <p><strong>Agent Elmer</strong> — a deterministic runtime for durable, parallel agents.</p>
+        <p>This site is a projection of the admitted story. It is not authority. <a href="docs.html#evidence">Evidence and sources</a>.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <nav aria-label="Product links">
+          <a href="product.html">The running system</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="docs.html#start">Start</a>
+        </nav>
+      </div>
+      <div>
+        <h2>Company</h2>
+        <nav aria-label="Company links">
+          <a href="investors.html">Investors</a>
+          <a href="docs.html">Docs</a>
+          <a href="art.html">Art</a>
+          <a href="docs.html#evidence">Evidence</a>
+        </nav>
+      </div>
+    </div>
+    <p class="footer__legal">No trackers. No third-party fonts. No external scripts. Content-addressed by the site check.</p>
+  </footer>
+</body>
+</html>
